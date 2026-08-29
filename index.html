@@ -58,7 +58,7 @@
         <label for="toggleCalendly">Calendly (Terminbuchung)</label>
         <input type="checkbox" id="toggleCalendly" class="cookie-toggle-input" />
       </div>
-      <p>Bindet den Buchungskalender von Calendly ein. Bei Nutzung werden Daten (z.&nbsp;B. IP-Adresse, bei Buchung auch Name/E-Mail) an Calendly (USA) übertragen.</p>
+      <p>Bindet den Buchungskalender von Calendly ein. Bei Nutzung werden Daten (z. B. IP-Adresse, bei Buchung auch Name/E-Mail) an Calendly (USA) übertragen.</p>
     </div>
 
     <div class="cookie-modal-actions">
@@ -99,6 +99,7 @@
       <nav class="main-nav" aria-label="Hauptnavigation">
         <ul>
           <li><a href="#ueber-uns">Über uns</a></li>
+          <li><a href="#galerie">Galerie</a></li>
           <li><a href="#leistungen">Leistungen</a></li>
           <li><a href="#bewertungen">Bewertungen</a></li>
           <li><a href="#kontakt">Kontakt</a></li>
@@ -115,6 +116,7 @@
     <nav class="mobile-nav" id="mobileNav" aria-label="Mobile Navigation">
       <ul>
         <li><a href="#ueber-uns">Über uns</a></li>
+        <li><a href="#galerie">Galerie</a></li>
         <li><a href="#leistungen">Leistungen</a></li>
         <li><a href="#bewertungen">Bewertungen</a></li>
         <li><a href="#kontakt">Kontakt</a></li>
@@ -127,7 +129,7 @@
     <!-- ================= HERO ================= -->
     <section class="hero">
       <div class="hero-grid">
-        <div class="hero-copy">
+        <div class="hero-copy reveal">
           <p class="hero-kicker">Friseursalon &amp; Beautystudio · Aiterhofen</p>
           <h1 class="hero-title">Handwerk,<br /><em>das man sieht.</em></h1>
           <p class="hero-sub">
@@ -140,7 +142,7 @@
           </div>
         </div>
 
-        <div class="hero-visual">
+        <div class="hero-visual reveal reveal-delay-1 reveal-scale">
           <div class="hero-ring" aria-hidden="true"></div>
           <img src="assets/img/Coiffour_Schiller_Logo.jpg" alt="Coiffeur Schiller — Hair &amp; Beauty Experts" class="hero-logo" />
         </div>
@@ -150,11 +152,11 @@
     <!-- ================= ÜBER UNS ================= -->
     <section class="about" id="ueber-uns">
       <div class="about-inner">
-        <div class="about-label">
+        <div class="about-label reveal">
           <p class="eyebrow">Über uns</p>
           <div class="rule" aria-hidden="true"></div>
         </div>
-        <div class="about-content">
+        <div class="about-content reveal">
           <h2>Wer wir sind</h2>
           <p class="about-text">
             Coiffeur Schiller ist Ihr Anlaufpunkt für Haar- und Beautypflege mit Charakter.
@@ -170,9 +172,27 @@
       </div>
     </section>
 
+    <!-- ================= GALERIE ================= -->
+    <section class="gallery" id="galerie">
+      <div class="gallery-head reveal">
+        <p class="eyebrow">Impressionen</p>
+        <h2>Aus unserem Salon</h2>
+        <div class="rule rule-center" aria-hidden="true"></div>
+      </div>
+
+      <div class="gallery-grid">
+        <figure class="gallery-item reveal">
+          <img src="assets/img/Coiffeur_Schiller_Bild_1.webp" alt="Coiffeur Schiller — Einblick in den Salon" loading="lazy" />
+        </figure>
+        <figure class="gallery-item reveal reveal-delay-1">
+          <img src="assets/img/Coffeur_Schiller_Bild_2.webp" alt="Coiffeur Schiller — Einblick in den Salon" loading="lazy" />
+        </figure>
+      </div>
+    </section>
+
     <!-- ================= LEISTUNGEN ================= -->
     <section class="services" id="leistungen">
-      <div class="services-head">
+      <div class="services-head reveal">
         <p class="eyebrow">Dienstleistungen</p>
         <h2>Unsere Leistungen</h2>
         <div class="rule rule-center" aria-hidden="true"></div>
@@ -180,11 +200,12 @@
 
       <div class="service-groups">
 
-        <article class="service-group">
-          <div class="service-group-head">
+        <details class="service-group reveal" open>
+          <summary class="service-group-head">
             <span class="service-group-num">I.</span>
             <h3>Schnitt &amp; Styling</h3>
-          </div>
+            <span class="service-group-icon" aria-hidden="true"></span>
+          </summary>
           <ul class="service-list">
             <li>Haarschnitte für Kinder</li>
             <li>Haarstyling</li>
@@ -193,13 +214,14 @@
             <li>Flechtfrisuren</li>
             <li>Lockenfrisuren</li>
           </ul>
-        </article>
+        </details>
 
-        <article class="service-group">
-          <div class="service-group-head">
+        <details class="service-group reveal reveal-delay-1">
+          <summary class="service-group-head">
             <span class="service-group-num">II.</span>
             <h3>Farbe &amp; Textur</h3>
-          </div>
+            <span class="service-group-icon" aria-hidden="true"></span>
+          </summary>
           <ul class="service-list">
             <li>Haarefärben</li>
             <li>Balayage</li>
@@ -209,36 +231,38 @@
             <li>Feuchtigkeitsbehandlung der Haare</li>
             <li>Haarverlängerungen</li>
           </ul>
-        </article>
+        </details>
 
-        <article class="service-group">
-          <div class="service-group-head">
+        <details class="service-group reveal reveal-delay-2">
+          <summary class="service-group-head">
             <span class="service-group-num">III.</span>
             <h3>Bart &amp; Augenbrauen</h3>
-          </div>
+            <span class="service-group-icon" aria-hidden="true"></span>
+          </summary>
           <ul class="service-list">
             <li>Bart schneiden</li>
             <li>Augenbrauen zupfen</li>
           </ul>
-        </article>
+        </details>
 
-        <article class="service-group">
-          <div class="service-group-head">
+        <details class="service-group reveal reveal-delay-3">
+          <summary class="service-group-head">
             <span class="service-group-num">IV.</span>
             <h3>Hände &amp; Füße</h3>
-          </div>
+            <span class="service-group-icon" aria-hidden="true"></span>
+          </summary>
           <ul class="service-list">
             <li>Maniküre</li>
             <li>Pediküre</li>
           </ul>
-        </article>
+        </details>
 
       </div>
     </section>
 
     <!-- ================= TERMIN BUCHEN ================= -->
     <section class="booking" id="termin">
-      <div class="booking-head">
+      <div class="booking-head reveal">
         <p class="eyebrow">Online-Terminbuchung</p>
         <h2>Termin buchen</h2>
         <div class="rule rule-center" aria-hidden="true"></div>
@@ -248,7 +272,7 @@
         </p>
       </div>
 
-      <div class="booking-embed" id="bookingEmbed">
+      <div class="booking-embed reveal" id="bookingEmbed">
         <!-- Wird per JavaScript befüllt: entweder der Calendly-Kalender (nach Zustimmung)
              oder ein Hinweis mit Zustimmungs-Button (siehe Skript am Seitenende). -->
         <div class="booking-placeholder" id="bookingPlaceholder">
@@ -267,7 +291,7 @@
 
     <!-- ================= BEWERTUNGEN ================= -->
     <section class="reviews" id="bewertungen">
-      <div class="reviews-inner">
+      <div class="reviews-inner reveal">
         <p class="eyebrow">Bewertungen</p>
         <h2>Was unsere Kunden sagen</h2>
         <div class="rule rule-center" aria-hidden="true"></div>
@@ -278,7 +302,7 @@
       </div>
 
       <div class="review-cards">
-        <article class="review-card">
+        <article class="review-card reveal">
           <div class="review-stars" aria-hidden="true">★★★★★</div>
           <p class="review-text">
             „Sehr schöner Salon. Ich war heute bei Susanne und bin sehr glücklich mit meiner
@@ -292,7 +316,7 @@
           </div>
         </article>
 
-        <article class="review-card">
+        <article class="review-card reveal reveal-delay-1">
           <div class="review-stars" aria-hidden="true">★★★★★</div>
           <p class="review-text">
             „Mittlerweile wieder ein Friseur, zu dem man gerne geht. Es wirkt alles ruhiger
@@ -306,7 +330,7 @@
           </div>
         </article>
 
-        <article class="review-card">
+        <article class="review-card reveal reveal-delay-2">
           <div class="review-stars" aria-hidden="true">★★★★★</div>
           <p class="review-text">
             „Sehr guter Service und super freundlich. Wir kommen gerne wieder.“
@@ -318,7 +342,7 @@
         </article>
       </div>
 
-      <div class="reviews-cta">
+      <div class="reviews-cta reveal">
         <a
           href="https://www.google.com/maps/search/?api=1&query=Coiffeur+Schiller+Raiffeisenstra%C3%9Fe+1+94330+Aiterhofen"
           target="_blank" rel="noopener" class="btn btn-primary"
@@ -333,7 +357,7 @@
 
     <!-- ================= KONTAKT ================= -->
     <section class="contact" id="kontakt">
-      <div class="contact-inner">
+      <div class="contact-inner reveal">
         <p class="eyebrow">Kontakt</p>
         <h2>Wir freuen uns auf Sie</h2>
         <div class="rule rule-center" aria-hidden="true"></div>
@@ -614,6 +638,36 @@
   if (yearEl) {
     yearEl.textContent = new Date().getFullYear();
   }
+</script>
+
+<script>
+  // ============================================================
+  // SCROLL-ANIMATIONEN
+  // Dezentes Einblenden ausgewählter Abschnitte beim Scrollen.
+  // ============================================================
+  (function () {
+    const revealEls = document.querySelectorAll('.reveal');
+    if (!revealEls.length) return;
+
+    if (!('IntersectionObserver' in window)) {
+      revealEls.forEach((el) => el.classList.add('is-visible'));
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.15, rootMargin: '0px 0px -60px 0px' }
+    );
+
+    revealEls.forEach((el) => observer.observe(el));
+  })();
 </script>
 </body>
 </html>

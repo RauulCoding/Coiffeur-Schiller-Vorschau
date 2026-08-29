@@ -326,6 +326,47 @@ em { font-style: italic; font-weight: 400; color: var(--gold-deep); }
 }
 
 /* -------------------------------------------------------------------------
+   7b. GALERIE
+   ------------------------------------------------------------------------- */
+.gallery {
+  background: var(--ivory);
+  padding: 6.5rem 1.6rem 7rem;
+}
+.gallery-head {
+  max-width: 640px;
+  margin: 0 auto 3.5rem;
+  text-align: center;
+}
+.gallery-head h2 { font-size: clamp(1.9rem, 3.4vw, 2.5rem); }
+
+.gallery-grid {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.6rem;
+}
+
+.gallery-item {
+  margin: 0;
+  overflow: hidden;
+  border-radius: var(--radius);
+  box-shadow: 0 20px 50px rgba(21, 19, 15, 0.12);
+}
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  transition: transform 480ms ease;
+}
+.gallery-item:hover img { transform: scale(1.04); }
+
+@media (max-width: 760px) {
+  .gallery-grid { grid-template-columns: 1fr; }
+}
+
+/* -------------------------------------------------------------------------
    8. LEISTUNGEN
    ------------------------------------------------------------------------- */
 .services {
@@ -340,28 +381,33 @@ em { font-style: italic; font-weight: 400; color: var(--gold-deep); }
 .services-head h2 { font-size: clamp(1.9rem, 3.4vw, 2.5rem); }
 
 .service-groups {
-  max-width: var(--max-width);
+  max-width: 760px;
   margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1px;
-  background: var(--line);
-  border: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
 .service-group {
   background: var(--ivory);
-  padding: 2.8rem 3rem 3rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 0;
+  overflow: hidden;
 }
 
 .service-group-head {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   gap: 1rem;
-  margin-bottom: 1.6rem;
-  padding-bottom: 1.3rem;
-  border-bottom: 1px solid var(--line);
+  padding: 1.6rem 2rem;
+  cursor: pointer;
+  list-style: none;
+  user-select: none;
+  transition: background var(--transition);
 }
+.service-group-head::-webkit-details-marker { display: none; }
+.service-group-head:hover { background: var(--ivory-deep); }
 
 .service-group-num {
   font-family: var(--font-display);
@@ -371,8 +417,35 @@ em { font-style: italic; font-weight: 400; color: var(--gold-deep); }
 }
 
 .service-group h3 {
-  font-size: 1.4rem;
+  font-size: 1.25rem;
   letter-spacing: 0.01em;
+  flex: 1;
+}
+
+.service-group-icon {
+  position: relative;
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+.service-group-icon::before,
+.service-group-icon::after {
+  content: "";
+  position: absolute;
+  top: 50%; left: 50%;
+  background: var(--gold-deep);
+  transform: translate(-50%, -50%);
+  transition: transform var(--transition), opacity var(--transition);
+}
+.service-group-icon::before { width: 14px; height: 1.5px; }
+.service-group-icon::after { width: 1.5px; height: 14px; }
+.service-group[open] .service-group-icon::after { transform: translate(-50%, -50%) rotate(90deg); opacity: 0; }
+
+.service-group .service-list {
+  padding: 0 2rem 1.8rem;
+  border-top: 1px solid var(--line);
+  padding-top: 1.4rem;
+  margin-top: -1px;
 }
 
 .service-list li {
@@ -609,7 +682,7 @@ em { font-style: italic; font-weight: 400; color: var(--gold-deep); }
   .hero-grid { grid-template-columns: 1fr; text-align: center; }
   .hero-visual { max-width: 320px; margin: 0 auto; order: -1; }
   .hero-actions { justify-content: center; }
-  .service-groups { grid-template-columns: 1fr; }
+  .service-groups { max-width: 100%; }
   .review-cards { grid-template-columns: 1fr; }
   .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
 }
@@ -617,7 +690,8 @@ em { font-style: italic; font-weight: 400; color: var(--gold-deep); }
 @media (max-width: 760px) {
   .main-nav, .nav-cta { display: none; }
   .nav-toggle { display: flex; }
-  .service-group { padding: 2.4rem 1.8rem; }
+  .service-group-head { padding: 1.3rem 1.4rem; }
+  .service-group .service-list { padding: 0 1.4rem 1.4rem; padding-top: 1.2rem; }
 }
 
 /* -------------------------------------------------------------------------
@@ -850,7 +924,39 @@ em { font-style: italic; font-weight: 400; color: var(--gold-deep); }
 .booking-placeholder a { color: var(--gold-deep); border-bottom: 1px solid var(--gold); }
 
 /* -------------------------------------------------------------------------
-   16. RECHTSTEXT-SEITEN (Impressum / Datenschutz)
+   16. SCROLL-ANIMATIONEN
+   ------------------------------------------------------------------------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 700ms ease, transform 700ms ease;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-scale {
+  transform: translateY(22px) scale(0.96);
+}
+.reveal-scale.is-visible {
+  transform: translateY(0) scale(1);
+}
+.reveal-delay-1 { transition-delay: 120ms; }
+.reveal-delay-2 { transition-delay: 240ms; }
+.reveal-delay-3 { transition-delay: 360ms; }
+
+/* Leichtes Anheben beim Hover — unterstreicht die Karten zusätzlich */
+.review-card,
+.gallery-item {
+  transition: transform 320ms ease, box-shadow 320ms ease;
+}
+.review-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+}
+
+/* -------------------------------------------------------------------------
+   17. RECHTSTEXT-SEITEN (Impressum / Datenschutz)
    ------------------------------------------------------------------------- */
 .legal-page {
   max-width: 780px;
