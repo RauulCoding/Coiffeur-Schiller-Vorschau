@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Coiffeur Schiller — Hair &amp; Beauty Experts</title>
+  <meta name="description" content="Coiffeur Schiller in Aiterhofen — Haarschnitte, Coloration, Balayage, Bart, Maniküre &amp; Pediküre." />
+  <link rel="icon" href=".idea/assets/img/Coiffour_Schiller_Logo.jpg" type="image/jpeg" />
+  <!-- Google Fonts werden erst NACH Cookie-Einwilligung geladen (siehe Skript am Seitenende) -->
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<!-- ================= COOKIE-BANNER ================= -->
+<div id="cookieBanner" class="cookie-banner" hidden role="dialog" aria-label="Cookie-Einwilligung">
+  <div class="cookie-banner-inner">
+    <p>
+      Wir verwenden nur technisch notwendige Speicherung. Optional binden wir
+      <strong>Google Fonts</strong> (Schriftarten) und <strong>Calendly</strong>
+      (Terminbuchung) ein — dabei werden Daten an diese Anbieter übertragen.
+      Mehr dazu in unserer <a href="datenschutz.html">Datenschutzerklärung</a>.
+    </p>
+    <div class="cookie-banner-actions">
+      <button type="button" class="btn btn-line" id="cookieOpenSettings">Auswahl anpassen</button>
+      <button type="button" class="btn btn-outline" id="cookieRejectAll">Nur notwendige</button>
+      <button type="button" class="btn btn-primary" id="cookieAcceptAll">Alle akzeptieren</button>
+    </div>
+  </div>
+</div>
+
+<!-- ================= COOKIE-EINSTELLUNGEN (Modal) ================= -->
+<div id="cookieModal" class="cookie-modal" hidden role="dialog" aria-label="Cookie-Einstellungen">
+  <div class="cookie-modal-box">
+    <h2>Cookie-Einstellungen</h2>
+    <p class="cookie-modal-intro">
+      Wählen Sie, welche optionalen Inhalte geladen werden dürfen. Sie können
+      Ihre Auswahl jederzeit über „Cookie-Einstellungen“ im Footer ändern.
+    </p>
+
+    <div class="cookie-option">
+      <div class="cookie-option-head">
+        <span>Notwendig</span>
+        <span class="cookie-toggle cookie-toggle-locked" aria-hidden="true">Immer aktiv</span>
+      </div>
+      <p>Speichert Ihre Cookie-Auswahl sowie den temporären Vorschau-Zugang. Ohne diese Funktion kann die Seite nicht sinnvoll genutzt werden.</p>
+    </div>
+
+    <div class="cookie-option">
+      <div class="cookie-option-head">
+        <label for="toggleFonts">Google Fonts</label>
+        <input type="checkbox" id="toggleFonts" class="cookie-toggle-input" />
+      </div>
+      <p>Lädt die Schriftarten „Fraunces“ und „Jost“ von Google-Servern. Dabei wird Ihre IP-Adresse an Google übertragen. Ohne Zustimmung wird eine ähnliche Systemschrift verwendet.</p>
+    </div>
+
+    <div class="cookie-option">
+      <div class="cookie-option-head">
+        <label for="toggleCalendly">Calendly (Terminbuchung)</label>
+        <input type="checkbox" id="toggleCalendly" class="cookie-toggle-input" />
+      </div>
+      <p>Bindet den Buchungskalender von Calendly ein. Bei Nutzung werden Daten (z.&nbsp;B. IP-Adresse, bei Buchung auch Name/E-Mail) an Calendly (USA) übertragen.</p>
+    </div>
+
+    <div class="cookie-modal-actions">
+      <button type="button" class="btn btn-outline" id="cookieRejectAllModal">Nur notwendige</button>
+      <button type="button" class="btn btn-primary" id="cookieSaveSettings">Auswahl speichern</button>
+    </div>
+  </div>
+</div>
+
+<!-- ================= VORSCHAU-LOGIN (temporär) ================= -->
+<div id="previewGate" class="preview-gate">
+  <form id="previewForm" class="preview-form" autocomplete="off">
+    <img src=".idea/assets/img/Coiffour_Schiller_Logo.jpg" alt="Coiffeur Schiller" class="preview-logo" />
+    <p class="preview-kicker">Vorschau — nur für autorisierte Betrachter</p>
+    <h1 class="preview-title">Coiffeur Schiller</h1>
+
+    <label class="preview-label" for="previewUser">Benutzername</label>
+    <input class="preview-input" type="text" id="previewUser" name="username" autocomplete="off" required />
+
+    <label class="preview-label" for="previewPass">Passwort</label>
+    <input class="preview-input" type="password" id="previewPass" name="password" autocomplete="off" required />
+
+    <button type="submit" class="btn btn-primary preview-submit">Anmelden</button>
+    <p class="preview-error" id="previewError" hidden>Benutzername oder Passwort ist falsch.</p>
+  </form>
+</div>
+
+<div id="siteContent" class="site-content" hidden>
+
+  <!-- ================= HEADER / NAV ================= -->
+  <header class="site-header" id="top">
+    <div class="header-inner">
+      <a href="#top" class="brand">
+        <img src=".idea/assets/img/Coiffour_Schiller_Logo.jpg" alt="Coiffeur Schiller Logo" class="brand-mark" />
+        <span class="brand-text">Coiffeur Schiller</span>
+      </a>
+
+      <nav class="main-nav" aria-label="Hauptnavigation">
+        <ul>
+          <li><a href="#ueber-uns">Über uns</a></li>
+          <li><a href="#leistungen">Leistungen</a></li>
+          <li><a href="#bewertungen">Bewertungen</a></li>
+          <li><a href="#kontakt">Kontakt</a></li>
+        </ul>
+      </nav>
+
+      <a href="#termin" class="btn btn-outline nav-cta">Termin buchen</a>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Menü öffnen" aria-expanded="false" aria-controls="mobileNav">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <nav class="mobile-nav" id="mobileNav" aria-label="Mobile Navigation">
+      <ul>
+        <li><a href="#ueber-uns">Über uns</a></li>
+        <li><a href="#leistungen">Leistungen</a></li>
+        <li><a href="#bewertungen">Bewertungen</a></li>
+        <li><a href="#kontakt">Kontakt</a></li>
+        <li><a href="#termin" class="btn btn-primary">Termin buchen</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <!-- ================= HERO ================= -->
+    <section class="hero">
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <p class="hero-kicker">Friseursalon &amp; Beautystudio · Aiterhofen</p>
+          <h1 class="hero-title">Handwerk,<br /><em>das man sieht.</em></h1>
+          <p class="hero-sub">
+            Schnitt, Farbe und Pflege auf höchstem Niveau — von Balayage bis Bart,
+            von Hochsteckfrisur bis Pediküre. Willkommen bei Coiffeur Schiller.
+          </p>
+          <div class="hero-actions">
+            <a href="#termin" class="btn btn-primary">Termin vereinbaren</a>
+            <a href="#leistungen" class="btn btn-line">Leistungen entdecken</a>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="hero-ring" aria-hidden="true"></div>
+          <img src=".idea/assets/img/Coiffour_Schiller_Logo.jpg" alt="Coiffeur Schiller — Hair &amp; Beauty Experts" class="hero-logo" />
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= ÜBER UNS ================= -->
+    <section class="about" id="ueber-uns">
+      <div class="about-inner">
+        <div class="about-label">
+          <p class="eyebrow">Über uns</p>
+          <div class="rule" aria-hidden="true"></div>
+        </div>
+        <div class="about-content">
+          <h2>Wer wir sind</h2>
+          <p class="about-text">
+            Coiffeur Schiller ist Ihr Anlaufpunkt für Haar- und Beautypflege mit Charakter.
+            Als Hair &amp; Beauty Experts verbinden wir handwerkliches Können mit einem
+            feinen Gespür für aktuelle Trends und zeitlose Eleganz. Ob präziser Herrenschnitt,
+            strahlende Coloration oder ein gepflegter Auftritt bis in die Fingerspitzen —
+            bei uns steht jede Behandlung für Sorgfalt, Qualität und ein Ergebnis, das zu
+            Ihnen passt. In entspannter Atmosphäre nehmen wir uns Zeit für Ihre Wünsche
+            und beraten Sie persönlich, damit Sie unseren Salon nicht nur gestylt,
+            sondern rundum wohl verlassen.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= LEISTUNGEN ================= -->
+    <section class="services" id="leistungen">
+      <div class="services-head">
+        <p class="eyebrow">Dienstleistungen</p>
+        <h2>Unsere Leistungen</h2>
+        <div class="rule rule-center" aria-hidden="true"></div>
+      </div>
+
+      <div class="service-groups">
+
+        <article class="service-group">
+          <div class="service-group-head">
+            <span class="service-group-num">I.</span>
+            <h3>Schnitt &amp; Styling</h3>
+          </div>
+          <ul class="service-list">
+            <li>Haarschnitte für Kinder</li>
+            <li>Haarstyling</li>
+            <li>Haareföhnen</li>
+            <li>Hochsteckfrisuren</li>
+            <li>Flechtfrisuren</li>
+            <li>Lockenfrisuren</li>
+          </ul>
+        </article>
+
+        <article class="service-group">
+          <div class="service-group-head">
+            <span class="service-group-num">II.</span>
+            <h3>Farbe &amp; Textur</h3>
+          </div>
+          <ul class="service-list">
+            <li>Haarefärben</li>
+            <li>Balayage</li>
+            <li>Dauerwellen</li>
+            <li>Haarglättung</li>
+            <li>Keratinbehandlungen</li>
+            <li>Feuchtigkeitsbehandlung der Haare</li>
+            <li>Haarverlängerungen</li>
+          </ul>
+        </article>
+
+        <article class="service-group">
+          <div class="service-group-head">
+            <span class="service-group-num">III.</span>
+            <h3>Bart &amp; Augenbrauen</h3>
+          </div>
+          <ul class="service-list">
+            <li>Bart schneiden</li>
+            <li>Augenbrauen zupfen</li>
+          </ul>
+        </article>
+
+        <article class="service-group">
+          <div class="service-group-head">
+            <span class="service-group-num">IV.</span>
+            <h3>Hände &amp; Füße</h3>
+          </div>
+          <ul class="service-list">
+            <li>Maniküre</li>
+            <li>Pediküre</li>
+          </ul>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ================= TERMIN BUCHEN ================= -->
+    <section class="booking" id="termin">
+      <div class="booking-head">
+        <p class="eyebrow">Online-Terminbuchung</p>
+        <h2>Termin buchen</h2>
+        <div class="rule rule-center" aria-hidden="true"></div>
+        <p class="booking-sub">
+          Wählen Sie direkt hier einen freien Termin – ganz ohne Anruf.
+          Verfügbare Zeiten werden live angezeigt.
+        </p>
+      </div>
+
+      <div class="booking-embed" id="bookingEmbed">
+        <!-- Wird per JavaScript befüllt: entweder der Calendly-Kalender (nach Zustimmung)
+             oder ein Hinweis mit Zustimmungs-Button (siehe Skript am Seitenende). -->
+        <div class="booking-placeholder" id="bookingPlaceholder">
+          <p>
+            Für die Online-Terminbuchung wird der Kalender unseres Partners
+            <strong>Calendly</strong> eingebunden. Dabei werden Daten an Calendly
+            (USA) übertragen – mehr dazu in unserer
+            <a href="datenschutz.html">Datenschutzerklärung</a>.
+          </p>
+          <button type="button" class="btn btn-primary" id="loadCalendlyBtn">
+            Kalender laden &amp; zustimmen
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= BEWERTUNGEN ================= -->
+    <section class="reviews" id="bewertungen">
+      <div class="reviews-inner">
+        <p class="eyebrow">Bewertungen</p>
+        <h2>Was unsere Kunden sagen</h2>
+        <div class="rule rule-center" aria-hidden="true"></div>
+        <p class="reviews-sub">
+          Echte Erfahrungen unserer Kundinnen und Kunden von unserem
+          Google-Unternehmensprofil.
+        </p>
+      </div>
+
+      <div class="review-cards">
+        <article class="review-card">
+          <div class="review-stars" aria-hidden="true">★★★★★</div>
+          <p class="review-text">
+            „Sehr schöner Salon. Ich war heute bei Susanne und bin sehr glücklich mit meiner
+            neuen Frisur. Toller Service und super freundliches Team. Ich wurde super beraten
+            und hatte zum ersten Mal einen Kopfhaut-Check. Die Farbe ist perfekt geworden,
+            genau was ich wollte.“
+          </p>
+          <div class="review-meta">
+            <a href="https://www.google.com/maps/contrib/109731998166635451950/reviews?hl=de-DE" target="_blank" rel="noopener">Christina Surovcev</a>
+            <span>vor einem Monat</span>
+          </div>
+        </article>
+
+        <article class="review-card">
+          <div class="review-stars" aria-hidden="true">★★★★★</div>
+          <p class="review-text">
+            „Mittlerweile wieder ein Friseur, zu dem man gerne geht. Es wirkt alles ruhiger
+            und geordneter als früher. Ich liebe die Kopfmassage bei jedem Termin und dass
+            sich mehr Zeit genommen wird als vorher. Ich gehe zu Lisa, aber alle im Team
+            sind sehr lieb!“
+          </p>
+          <div class="review-meta">
+            <a href="https://www.google.com/maps/contrib/105941604767065816622/reviews?hl=de-DE" target="_blank" rel="noopener">Lilly 1341</a>
+            <span>vor 2 Monaten · Haarstyling, Feuchtigkeitsbehandlung</span>
+          </div>
+        </article>
+
+        <article class="review-card">
+          <div class="review-stars" aria-hidden="true">★★★★★</div>
+          <p class="review-text">
+            „Sehr guter Service und super freundlich. Wir kommen gerne wieder.“
+          </p>
+          <div class="review-meta">
+            <a href="https://www.google.com/maps/contrib/109612839854113179048/reviews?hl=de-DE" target="_blank" rel="noopener">Maria Schlüsslbrunner</a>
+            <span>vor 2 Monaten · Kinderhaarschnitt, Pony, Styling, Föhnen</span>
+          </div>
+        </article>
+      </div>
+
+      <div class="reviews-cta">
+        <a
+          href="https://www.google.com/maps/search/?api=1&query=Coiffeur+Schiller+Raiffeisenstra%C3%9Fe+1+94330+Aiterhofen"
+          target="_blank" rel="noopener" class="btn btn-primary"
+        >
+          Alle Bewertungen auf Google ansehen
+        </a>
+        <p class="reviews-note">
+          Waren Sie bei uns? Wir freuen uns über Ihre Bewertung auf Google.
+        </p>
+      </div>
+    </section>
+
+    <!-- ================= KONTAKT ================= -->
+    <section class="contact" id="kontakt">
+      <div class="contact-inner">
+        <p class="eyebrow">Kontakt</p>
+        <h2>Wir freuen uns auf Sie</h2>
+        <div class="rule rule-center" aria-hidden="true"></div>
+
+        <div class="contact-grid">
+          <div class="contact-block">
+            <h3>Adresse</h3>
+            <p>
+              Raiffeisenstraße 1<br />
+              94330 Aiterhofen
+            </p>
+            <a href="https://www.google.com/maps/search/?api=1&query=Raiffeisenstra%C3%9Fe+1%2C+94330+Aiterhofen" target="_blank" rel="noopener">Route planen</a>
+          </div>
+          <div class="contact-block">
+            <h3>Öffnungszeiten</h3>
+            <p>
+              <span class="hours-row"><span>Montag</span><span>Geschlossen</span></span>
+              <span class="hours-row"><span>Dienstag</span><span>08:00–18:00</span></span>
+              <span class="hours-row"><span>Mittwoch</span><span>08:00–18:00</span></span>
+              <span class="hours-row"><span>Donnerstag</span><span>08:00–18:00</span></span>
+              <span class="hours-row"><span>Freitag</span><span>08:00–18:00</span></span>
+              <span class="hours-row"><span>Samstag</span><span>08:00–13:00</span></span>
+              <span class="hours-row"><span>Sonntag</span><span>Geschlossen</span></span>
+            </p>
+          </div>
+          <div class="contact-block">
+            <h3>Termin &amp; Kontakt</h3>
+            <p>
+              Telefon: <a href="tel:+49942132497">09421 32497</a><br />
+              E-Mail: <a href="mailto:info@coiffeurschiller.de">info@coiffeurschiller.de</a>
+            </p>
+            <a href="https://www.instagram.com/coiffeurschiller/" target="_blank" rel="noopener" class="instagram-link">
+              <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M12 2.2c3.2 0 3.6 0 4.85.07 3.25.15 4.77 1.69 4.92 4.92.06 1.25.07 1.63.07 4.81 0 3.19-.01 3.56-.07 4.81-.15 3.23-1.66 4.77-4.92 4.92-1.25.06-1.62.07-4.85.07-3.2 0-3.6 0-4.85-.07-3.26-.15-4.77-1.7-4.92-4.92-.06-1.25-.07-1.62-.07-4.81 0-3.19.01-3.56.07-4.81.15-3.23 1.67-4.77 4.92-4.92C8.4 2.21 8.8 2.2 12 2.2zM12 0C8.74 0 8.33.01 7.05.07c-4.35.2-6.78 2.62-6.98 6.98C.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.2 4.35 2.62 6.78 6.98 6.98C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c4.35-.2 6.78-2.62 6.98-6.98.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.2-4.35-2.62-6.78-6.98-6.98C15.67.01 15.26 0 12 0zm0 5.84A6.16 6.16 0 1 0 12 18.16 6.16 6.16 0 0 0 12 5.84zm0 10.16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.41-10.4a1.44 1.44 0 1 1-2.88 0 1.44 1.44 0 0 1 2.88 0z"/></svg>
+              @coiffeurschiller
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <img src=".idea/assets/img/Coiffour_Schiller_Logo.jpg" alt="Coiffeur Schiller" class="footer-mark" />
+      <p>&copy; <span id="year"></span> Coiffeur Schiller — Hair &amp; Beauty Experts</p>
+      <a href="https://www.instagram.com/coiffeurschiller/" target="_blank" rel="noopener">Instagram</a>
+    </div>
+    <div class="footer-legal">
+      <a href="impressum.html">Impressum</a>
+      <span aria-hidden="true">·</span>
+      <a href="datenschutz.html">Datenschutz</a>
+      <span aria-hidden="true">·</span>
+      <button type="button" id="openCookieSettings" class="footer-legal-btn">Cookie-Einstellungen</button>
+    </div>
+  </footer>
+
+</div><!-- /#siteContent -->
+
+<script>
+  // ============================================================
+  // COOKIE-/EINWILLIGUNGSVERWALTUNG
+  // Steuert das Nachladen von Google Fonts und Calendly erst nach
+  // Zustimmung. Speicherung der Auswahl in localStorage.
+  // ============================================================
+  (function () {
+    const CONSENT_KEY = 'cs_consent_v1';
+
+    function readConsent() {
+      try {
+        const raw = localStorage.getItem(CONSENT_KEY);
+        return raw ? JSON.parse(raw) : null;
+      } catch (e) { return null; }
+    }
+
+    function writeConsent(consent) {
+      try {
+        localStorage.setItem(CONSENT_KEY, JSON.stringify(consent));
+      } catch (e) {}
+    }
+
+    function loadGoogleFonts() {
+      if (document.getElementById('googleFontsLink')) return;
+      const preconnect1 = document.createElement('link');
+      preconnect1.rel = 'preconnect';
+      preconnect1.href = 'https://fonts.googleapis.com';
+      const preconnect2 = document.createElement('link');
+      preconnect2.rel = 'preconnect';
+      preconnect2.href = 'https://fonts.gstatic.com';
+      preconnect2.crossOrigin = 'anonymous';
+      const fontLink = document.createElement('link');
+      fontLink.id = 'googleFontsLink';
+      fontLink.rel = 'stylesheet';
+      fontLink.href = 'https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,400&family=Jost:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap';
+      document.head.appendChild(preconnect1);
+      document.head.appendChild(preconnect2);
+      document.head.appendChild(fontLink);
+    }
+
+    function loadCalendly() {
+      const placeholder = document.getElementById('bookingPlaceholder');
+      const embed = document.getElementById('bookingEmbed');
+      if (!embed || document.getElementById('calendlyScript')) return;
+      if (placeholder) placeholder.remove();
+
+      const widget = document.createElement('div');
+      widget.className = 'calendly-inline-widget';
+      widget.setAttribute('data-url', 'https://calendly.com/raulcolac2008/termin-buchen?hide_event_type_details=1&hide_gdpr_banner=1&background_color=f7f1e4&text_color=201f1c&primary_color=ad8d47');
+      widget.style.minWidth = '280px';
+      widget.style.height = '780px';
+      embed.appendChild(widget);
+
+      const script = document.createElement('script');
+      script.id = 'calendlyScript';
+      script.src = 'https://assets.calendly.com/assets/external/widget.js';
+      script.async = true;
+      document.body.appendChild(script);
+    }
+
+    function applyConsent(consent) {
+      if (consent.fonts) loadGoogleFonts();
+      if (consent.calendly) loadCalendly();
+    }
+
+    function hideBanner() {
+      banner.hidden = true;
+      modal.hidden = true;
+    }
+
+    function currentToggleState() {
+      return { fonts: !!toggleFonts.checked, calendly: !!toggleCalendly.checked };
+    }
+
+    function setToggles(consent) {
+      toggleFonts.checked = !!consent.fonts;
+      toggleCalendly.checked = !!consent.calendly;
+    }
+
+    const banner = document.getElementById('cookieBanner');
+    const modal = document.getElementById('cookieModal');
+    const toggleFonts = document.getElementById('toggleFonts');
+    const toggleCalendly = document.getElementById('toggleCalendly');
+
+    const existing = readConsent();
+    if (existing) {
+      applyConsent(existing);
+      setToggles(existing);
+    } else {
+      banner.hidden = false;
+    }
+
+    document.getElementById('cookieAcceptAll').addEventListener('click', () => {
+      const consent = { fonts: true, calendly: true, ts: new Date().toISOString() };
+      writeConsent(consent);
+      applyConsent(consent);
+      setToggles(consent);
+      hideBanner();
+    });
+
+    document.getElementById('cookieRejectAll').addEventListener('click', () => {
+      const consent = { fonts: false, calendly: false, ts: new Date().toISOString() };
+      writeConsent(consent);
+      setToggles(consent);
+      hideBanner();
+    });
+
+    document.getElementById('cookieRejectAllModal').addEventListener('click', () => {
+      const consent = { fonts: false, calendly: false, ts: new Date().toISOString() };
+      writeConsent(consent);
+      setToggles(consent);
+      hideBanner();
+    });
+
+    document.getElementById('cookieOpenSettings').addEventListener('click', () => {
+      modal.hidden = false;
+    });
+
+    document.getElementById('openCookieSettings').addEventListener('click', () => {
+      const c = readConsent() || { fonts: false, calendly: false };
+      setToggles(c);
+      banner.hidden = false;
+      modal.hidden = false;
+    });
+
+    document.getElementById('cookieSaveSettings').addEventListener('click', () => {
+      const consent = Object.assign(currentToggleState(), { ts: new Date().toISOString() });
+      writeConsent(consent);
+      applyConsent(consent);
+      hideBanner();
+    });
+
+    const loadCalendlyBtn = document.getElementById('loadCalendlyBtn');
+    if (loadCalendlyBtn) {
+      loadCalendlyBtn.addEventListener('click', () => {
+        const consent = Object.assign(readConsent() || { fonts: false }, { calendly: true, ts: new Date().toISOString() });
+        writeConsent(consent);
+        applyConsent(consent);
+        setToggles(consent);
+      });
+    }
+  })();
+</script>
+
+<script>
+  // ============================================================
+  // TEMPORÄRE VORSCHAU-SPERRE — bitte vor dem echten Live-Gang
+  // entfernen (siehe Hinweis in der Doku / Chat).
+  // Hinweis: Dies ist KEINE echte Sicherheit, da rein clientseitig.
+  // ============================================================
+  (function () {
+    const PREVIEW_USER = 'Coiffeur Schiller';
+    const PREVIEW_PASS = 'Coiffeur_Schiller!895';
+    const STORAGE_KEY = 'cs_preview_unlocked';
+
+    const gate = document.getElementById('previewGate');
+    const content = document.getElementById('siteContent');
+    const form = document.getElementById('previewForm');
+    const userInput = document.getElementById('previewUser');
+    const passInput = document.getElementById('previewPass');
+    const errorMsg = document.getElementById('previewError');
+
+    function unlock() {
+      gate.style.display = 'none';
+      content.hidden = false;
+      document.documentElement.style.overflow = '';
+      try { localStorage.setItem(STORAGE_KEY, 'true'); } catch (e) {}
+    }
+
+    // Bereits in diesem Browser freigeschaltet?
+    let alreadyUnlocked = false;
+    try { alreadyUnlocked = localStorage.getItem(STORAGE_KEY) === 'true'; } catch (e) {}
+
+    if (alreadyUnlocked) {
+      unlock();
+    } else {
+      document.documentElement.style.overflow = 'hidden';
+    }
+
+    if (form) {
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const ok = userInput.value.trim() === PREVIEW_USER && passInput.value === PREVIEW_PASS;
+        if (ok) {
+          errorMsg.hidden = true;
+          unlock();
+        } else {
+          errorMsg.hidden = false;
+          passInput.value = '';
+          passInput.focus();
+        }
+      });
+    }
+  })();
+</script>
+
+<script>
+  // Mobile-Navigation umschalten
+  const navToggle = document.getElementById('navToggle');
+  const mobileNav = document.getElementById('mobileNav');
+
+  if (navToggle && mobileNav) {
+    navToggle.addEventListener('click', () => {
+      const isOpen = mobileNav.classList.toggle('open');
+      navToggle.setAttribute('aria-expanded', String(isOpen));
+    });
+
+    // Menü schließen, sobald ein Link angeklickt wird
+    mobileNav.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => {
+        mobileNav.classList.remove('open');
+        navToggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+  }
+
+  // Aktuelles Jahr im Footer
+  const yearEl = document.getElementById('year');
+  if (yearEl) {
+    yearEl.textContent = new Date().getFullYear();
+  }
+</script>
+</body>
+</html>
